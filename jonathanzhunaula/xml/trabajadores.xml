@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<salarios>
+  <empleado>
+    <genero>m</genero>
+    <cedula>1309761433</cedula>
+    <nombres>CARLOS ISAIAS</nombres>
+    <apellidos>ALCIVAR MERA</apellidos>
+    <horas_trabajadas>200</horas_trabajadas>
+    <valor_hora>5</valor_hora>
+  </empleado>
+
+  <empleado>
+    <genero>f</genero>
+    <cedula>1313281493</cedula>
+    <nombres>KENIA ANDREINA</nombres>
+    <apellidos>ALAVA GARCIA</apellidos>
+    <horas_trabajadas>25</horas_trabajadas>
+    <valor_hora>15</valor_hora>
+
+  </empleado>
+
+  <empleado>
+    <genero>m</genero>
+    <cedula>1312359845</cedula>
+    <nombres>KYORDY EDWIN</nombres>
+    <apellidos>ALMEIDA LOOR</apellidos>
+    <horas_trabajadas>40</horas_trabajadas>
+    <valor_hora>8</valor_hora>
+
+  </empleado>  
+</salarios>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link  rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+</head>
+
+<body>
+	
+	<h2><center>Jonathan Zhunaula Angamarca</center></h2><br>
+
+
+	
+	<script>
+
+
+		if(window.XMLHttpRequest){
+
+			xmlhttp = new XMLHttpRequest();
+			//document.write("Hola que hace si"+"<br>");
+			//Se crea un request para firefox, chrome, etc
+
+		}else{
+
+			xmlhttp = new ActiveXObject();
+			document.write("Hola que hace no");
+			//Se crea un request para internet Explorer
+
+		}
+		xmlhttp.open("GET", "xml/trabajadores.xml",false);
+		xmlhttp.send();
+		//document.write("Hola que hace si"+"<br>");
+		var documento = xmlhttp.responseXML;
+		var listado = documento.getElementsByTagName('empleado');
+
+		if (listado.length>0){
+
+			document.write("<h3>lista de trabajadores</h3>","<br>");
+			document.write("<table class='table table-hover'>");
+			document.write("<tr><th>foto</th><th>Cedula</th><th>nombre</th>");
+			document.write("<th>Apellidos</th><th>horas/trabajadas</th><th>valor/hora</th>");
+			document.write("<th>Salario</th><th>Impuesto</th></tr>");
+			
+
+			for (var i = 0; i<listado.length; i++) {
+				//document.write(listado[i]);
+
+				var genero=listado[i].getElementsByTagName('genero')[0].childNodes[0].nodeValue;
+				document.write("<tr><td>")
+				if (genero=='m') {
+					document.write("<img src='imagen/Hombre.png'/>");
+				}else{
+					document.write("<img src='imagen/Mujer.png'/>");
+				}
+				
+				var cedula=listado[i].getElementsByTagName('cedula')[0].childNodes[0].nodeValue;
+				document.write("<td>"+cedula+"</td>");
+
+				var nombres=listado[i].getElementsByTagName('nombres')[0].childNodes[0].nodeValue;
+				document.write("<td>"+nombres+"</td>");
+
+				var Apellidos= listado[i].getElementsByTagName('apellidos')[0].childNodes[0].nodeValue;
+				document.write("<td>"+Apellidos+"</td>");
+
+				var horas=listado[i].getElementsByTagName('horas_trabajadas')[0].childNodes[0].nodeValue;
+					document.write("<td>"+horas+"</td>");
+
+				var valor=listado[i].getElementsByTagName('valor_hora')[0].childNodes[0].nodeValue;
+				document.write("<td>"+valor+"</td>");
+
+				
+				if (horas<41) {
+					var salario=parseInt(horas)*parseInt(valor);
+					document.write("<td>"+salario+"</td>");
+				}
+
+				if(horas>40){
+					
+					var promedio= parseInt(horas)-40;
+					
+					var salario= 40 * parseInt(valor) +(parseInt(promedio)*1.5);
+					document.write("<td>"+salario+"</td>");
+				}
+				
+				if(salario<400){
+					var val=00;
+					document.write("<td>"+val+"</td>");
+				}else
+				{				
+					var impu=parseInt(salario)*0.25;
+					document.write("<td>"+impu+"</td>");	
+				}
+				if(salario>800){
+					var impu=parseInt(salario)*0.45;
+					document.write("<td>"+impu+"</td></tr>");
+				}				
+				
+
+			}
+			document.write("</table>");
+
+		}else{
+			document.write("el documento esta vacio");
+		}
+
+
+	</script>
+</body>
+</html>
